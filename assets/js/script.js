@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const selectElement = document.querySelector('#employee-select');
-    const displayCardTitle = document.querySelector('.card-title');
+    const displayCardTitle = document.querySelector('#card-title');
     const displayCardTextRole = document.querySelector('.card-text-role');
     const displayCardTextDate = document.querySelector('.card-text-date');
 
     // Populate the dropdown with the list of employees
     employeeData.forEach(employee => {
         const option = document.createElement('li');
-        option.value = employee.name;
+        option.value = employee.title;
         option.textContent = employee.name;
         selectElement.appendChild(option);
     });
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displayCardTextRole.textContent = `Role: ${employee.title}`;
     
         const firstName = employee.name.split(' ')[0];
-        const date = new Date(employee.dateJoined).toLocaleDateString();
+        const date = new Date(employee.dateStarted).toLocaleDateString();
         const blurb = `${firstName} joined the company on ${date}`;
         displayCardTextDate.textContent = blurb;
     };
