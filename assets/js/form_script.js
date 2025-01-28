@@ -28,7 +28,7 @@ const forbiddenWords = [
 document.addEventListener('DOMContentLoaded', () => {
 
     // Get references to the input elements and the form
-    const wishInputs = document.querySelector('.wish-input');
+    const wishInputs = document.querySelectorAll('.wish-input');
     const form = document.querySelector('form');
 
     form.addEventListener('submit', (e) => {
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Loop through the inputs and check for forbidden words
         for (let input of wishInputs) {
-            const value = input.value.toUpperCase();
+            const value = input.value.toLowerCase();
             const words = value.split(' ');
             for (let word of words) {
                 if (forbiddenWords.includes(word)) {
