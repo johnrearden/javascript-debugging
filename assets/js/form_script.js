@@ -26,7 +26,7 @@ const forbiddenWords = [
   
 
 document.addEventListener('DOMContentLoaded', () => {
-    const wishInputs = document.querySelector('.wish-input');
+    const wishInputs = document.querySelectorAll('.wish-input');
     const form = document.querySelector('form');
 
     form.addEventListener('submit', (e) => {
