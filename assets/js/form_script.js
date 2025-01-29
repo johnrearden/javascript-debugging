@@ -1,5 +1,5 @@
 const forbiddenWords = [
-    "unlimied",
+    "unlimited",
     "boundless",
     "endless",
     "limitless",
@@ -28,37 +28,51 @@ const forbiddenWords = [
 document.addEventListener('DOMContentLoaded', () => {
 
     // Get references to the input elements and the form
-    const wishInputs = document.querySelector('.wish-input');
+    const wishInputs = document.querySelectorAll('.wish-input');
     const form = document.querySelector('form');
 
     form.addEventListener('submit', (e) => {
 
+        e.preventDefault();
+
         let wishCount = 0;
+        let emptyInput;
 
         // Loop through the inputs and check for forbidden words
         for (let input of wishInputs) {
-            const value = input.value.toUpperCase();
+
+            // Testing for forbidden words
+            const value = input.value.toLowerCase();
             const words = value.split(' ');
             for (let word of words) {
-                if (forbiddenWords.includes(word)) {
-                    input.setCustomValidity('No wishing for infinite wishes!');
-                    input.reportValidity();
-                    return; // Return without submitting the form
-                }
-            }
-            if (value.length > 0) {
-                wishCount++;
+                if (word.length > 0) {
+                    if (forbiddenWords.includes(word)) {
+                        input.setCustomValidity('No wishing for infinite wishes!');
+                        input.reportValidity();
+                        return; // Return without submitting the form
+                    } 
+                } 
             }
 
-            // If this input is empty and less than 2 wish inputs have been filled, show an error
-            if (value.length === 0 && wishCount < 2) {
-                input.setCustomValidity('You must make at least 2 wishes!');
-                input.reportValidity();
-                return; // return without submitting the form
+            // Count this wish if not empty
+            if (value.length > 0) {
+                wishCount++;
+            } else {
+                emptyInput = input;
             }
         }
 
+        console.log('Wish count:', wishCount);
+        if (wishCount >= 2) {
+            console.log('form is valid');
+            //form.submit();
+        } else {
+            emptyInput.setCustomValidity('You must make at least 2 wishes!');
+            emptyInput.reportValidity();
+            return; // Return without submitting the form
+        }
+
         // If we get here, the form is valid, so submit it
-        form.submit();
+        // form.submit();
     });
 });
