@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const selectElement = document.querySelector('#employee-select');
-    const displayCardTitle = document.querySelector('#card-title');
+    const displayCardTitle = document.querySelector('.card-title');
     const displayCardTextRole = document.querySelector('.card-text-role');
     const displayCardTextDate = document.querySelector('.card-text-date');
 
     // Populate the dropdown with the list of employees
     employeeData.forEach(employee => {
-        const option = document.createElement('li');
-        option.value = employee.title;
+        const option = document.createElement('option');
+        option.value = employee.name;
         option.textContent = employee.name;
         selectElement.appendChild(option);
     });
