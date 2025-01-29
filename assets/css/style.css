@@ -10,3 +10,10 @@ a {
 .t-and-c-list {
     font-size: 0.7rem;
 }
+
+.requirements {
+    padding: 1rem;
+    background-color: rgb(228, 188, 113);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 3px 0 orange;
+}
