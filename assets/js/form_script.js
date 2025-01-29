@@ -33,9 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener('submit', (e) => {
 
-        // Prevent the form from submitting until we have done our validation
-        e.preventDefault();
-
         let wishCount = 0;
 
         // Loop through the inputs and check for forbidden words
@@ -55,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // If this input is empty and less than 2 wish inputs have been filled, show an error
             if (value.length === 0 && wishCount < 2) {
-                console.log(input.id);
                 input.setCustomValidity('You must make at least 2 wishes!');
                 input.reportValidity();
                 return; // return without submitting the form
