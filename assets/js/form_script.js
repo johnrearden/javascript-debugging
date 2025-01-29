@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener('submit', (e) => {
 
+        e.preventDefault();
+
         let wishCount = 0;
 
         // Loop through the inputs and check for forbidden words
